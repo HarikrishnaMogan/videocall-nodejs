@@ -19,15 +19,14 @@ const io= socketIO(server,{
 app.use(cors());
 
 app.get("/",(req,res)=>{
-    res.send("server is running");
+  
+    res.send("server is running")
 })
 
 io.on("connection",(socket)=>{
     socket.emit("me" ,socket.id);
 
-    socket.on("disconnect",()=>{
-        socket.broadcast.emit("callended");
-    })
+   
   
    socket.on("joinroom", ({roomid,userid,signal})=>{
        socket.join(roomid);
