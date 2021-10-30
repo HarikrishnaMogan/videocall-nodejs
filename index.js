@@ -31,7 +31,7 @@ io.on("connection",(socket)=>{
   
    socket.on("joinroom", ({roomid,userid,signal})=>{
        socket.join(roomid);
-      socket.broadcast.emit("userjoined",{signal,userid});
+      socket.broadcast.to(roomid).emit("userjoined",{signal,userid});
        console.log(userid  ,"user");
    })
 })
